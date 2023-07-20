@@ -3,22 +3,33 @@ const app = express()
 const bodyP = require("body-parser")
 const compiler = require("compilex")
 const options = { stats: true }
+const path = require("path");
+
 compiler.init(options)
 app.use(bodyP.json())
-app.use("/codemirror", express.static("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/codemirror"))
+app.use(bodyP.urlencoded({extended:true}));
+app.use("/codemirror", express.static("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/codemirror"))
+app.use("/public", express.static("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/public"))
+
+ 
 
 app.get("/", function (req, res) {
     compiler.flush(function () {
         console.log("deleted")
     })
-    res.sendFile("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/index.html")
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/public/index.html")
 })
 
 app.get("/frontend", function (req, res) {
     compiler.flush(function () {
         console.log("open file")
     })
-    res.sendFile("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/frontend.html")
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/frontend.html")
+})
+
+app.get("/backend", function (req, res) {
+ 
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/backend.html")
 })
 
 app.post("/compile", function (req, res) {
@@ -70,7 +81,7 @@ app.post("/compile", function (req, res) {
                 compiler.compileJavaWithInput(envData, code, input, function (data) {
                     if (data.output) {
                         res.send(data);
-                    }
+                        }
                     else {
                         res.send({ output: "error" })
                     }
