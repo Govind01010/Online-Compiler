@@ -8,13 +8,12 @@ const path = require("path");
 compiler.init(options)
 app.use(bodyP.json())
 app.use(bodyP.urlencoded({extended:true}));
-<<<<<<< HEAD
-app.use("/codemirror", express.static("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/codemirror"))
-app.use("/public", express.static("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/public"))
-=======
-app.use("/codemirror", express.static("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/codemirror"))
-app.use("/public", express.static("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/public"))
->>>>>>> 2c75a3357c48e75c25b3b431b3c108208a6482f5
+
+app.use("/codemirror", express.static("C:/Users/Govind/OneDrive/Documents/Myprojects/CodeEditor/codemirror"))
+app.use("/public", express.static("C:/Users/Govind/OneDrive/Documents/Myprojects/CodeEditor/public"))
+
+
+
 
  
 
@@ -22,29 +21,24 @@ app.get("/", function (req, res) {
     compiler.flush(function () {
         console.log("deleted")
     })
-<<<<<<< HEAD
-    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/public/index.html")
-=======
-    res.sendFile("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/public/index.html")
->>>>>>> 2c75a3357c48e75c25b3b431b3c108208a6482f5
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/Myprojects/CodeEditor/public/index.html")
 })
 
 app.get("/frontend", function (req, res) {
     compiler.flush(function () {
         console.log("open file")
     })
-    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/frontend.html")
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/Myprojects/CodeEditor/frontend.html")
 })
 
 app.get("/backend", function (req, res) {
- 
-    res.sendFile("C:/Users/Govind/OneDrive/Documents/My projects/CodeEditor/backend.html")
+    compiler.flush(function () {
+        console.log("open file")
+    })
+    res.sendFile("C:/Users/Govind/OneDrive/Documents/Myprojects/CodeEditor/backend.html")
 })
 
-app.get("/backend", function (req, res) {
- 
-    res.sendFile("C:/Users/toshiba/Documents/Final Code Editor/CodeEditor/backend.html")
-})
+
 
 app.post("/compile", function (req, res) {
     var code = req.body.code

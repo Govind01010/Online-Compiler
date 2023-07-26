@@ -87,10 +87,12 @@
     autoCloseBrackets: true,
   });
   var width = window.innerWidth;
+
   var input = document.getElementById("input");
   var output = document.getElementById("output");
   var run = document.getElementById("run");
   editor.setSize(0.7 * width, "500");
+  
   var option = document.getElementById("inlineFormSelectPref");
   option.addEventListener("change", function () {
     if (option.value == "Java") {
